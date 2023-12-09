@@ -48,7 +48,7 @@
   </div>
   <div class="carousel-inner" style="height: 500px;">
     <div class="carousel-item active">
-      <img src="https://cdn.pixabay.com/photo/2016/02/16/21/07/books-1204029_1280.jpg"
+      <img src="https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
  class="d-block w-100" alt="...">
 
     </div>
@@ -121,82 +121,9 @@
     </div>
   </div>
 </div>
-<br>
-<div class="cards">
 
-<div class="card" style="width: 18rem;">
-  <img src="./img/portada.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Libro</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut distinctio laudantium, voluptate, sed consequuntur quia fugit dolorem corporis quam sit nam praesentium vitae et! Vitae officiis eos incidunt ipsam excepturi.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
 
-<div class="card" style="width: 18rem;">
-  <img src="./img/portada.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h5 class="card-title">Libro</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut distinctio laudantium, voluptate, sed consequuntur quia fugit dolorem corporis quam sit nam praesentium vitae et! Vitae officiis eos incidunt ipsam excepturi.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="./img/portada.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h5 class="card-title">Libro</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut distinctio laudantium, voluptate, sed consequuntur quia fugit dolorem corporis quam sit nam praesentium vitae et! Vitae officiis eos incidunt ipsam excepturi.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="./img/portada.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h5 class="card-title">Libro</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut distinctio laudantium, voluptate, sed consequuntur quia fugit dolorem corporis quam sit nam praesentium vitae et! Vitae officiis eos incidunt ipsam excepturi.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
 
-   </div>
-
-   <br>
- <div class="cards">
-<div class="card" style="width: 18rem;">
-  <img src="./img/portada.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h5 class="card-title">Libro</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut distinctio laudantium, voluptate, sed consequuntur quia fugit dolorem corporis quam sit nam praesentium vitae et! Vitae officiis eos incidunt ipsam excepturi.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-<div class="card" style="width: 18rem;">
-  <img src="./img/portada.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h5 class="card-title">Libro</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut distinctio laudantium, voluptate, sed consequuntur quia fugit dolorem corporis quam sit nam praesentium vitae et! Vitae officiis eos incidunt ipsam excepturi.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="./img/portada.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h5 class="card-title">Libro</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut distinctio laudantium, voluptate, sed consequuntur quia fugit dolorem corporis quam sit nam praesentium vitae et! Vitae officiis eos incidunt ipsam excepturi.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="./img/portada.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h5 class="card-title">Libro</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut distinctio laudantium, voluptate, sed consequuntur quia fugit dolorem corporis quam sit nam praesentium vitae et! Vitae officiis eos incidunt ipsam excepturi.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-   </div>
 
 
 
@@ -210,7 +137,7 @@
           $comentario = $_GET['comentario'];
     ?>
 
-    <div class="alert alert-success" role="alert">
+
       <div class="modal fade" id="ModalContact" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
@@ -231,7 +158,7 @@
           </div>
         </div>
       </div>
-    </div>
+
     <?php
     }
     ?>

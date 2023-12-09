@@ -9,46 +9,71 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<?php
-        function conectar() {
-            $conexion = mysqli_connect("localhost", "root", "", "Biblioteca") or die("Problemas con la conexión");
-            return $conexion;
-        }
 
-        function ejecutarConsultaAutores() {
-            $conexion = conectar(); 
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $busqueda = $_POST["busqueda"];
-                $consultaa = "SELECT CONCAT(nombre, ' ', apellido) AS Autor, telefono, direccion, ciudad, estado, pais, cod_postal FROM autores
-                               WHERE CONCAT(nombre, ' ', apellido) LIKE '%$busqueda%'";
-            } else {
-                $consultaa = "SELECT CONCAT(nombre, ' ', apellido) AS Autor, telefono, direccion, ciudad, estado, pais, cod_postal FROM autores";
-            }
-         
-            $registros = mysqli_query($conexion, $consultaa)or die("Problemas en el select:" . mysqli_error($conexion));
-            if (mysqli_num_rows($registros) > 0) {
-                while ($reg = mysqli_fetch_array($registros)) {
-                echo "
-                    <h3>" . $reg['Autor'] . "</h3> 
-                    <div class=\"linea\">
-                    <em class=\"izq\"> Tel. " . $reg['telefono'] . "</em> 
-                    <em class=\"der\">" . $reg['pais'] . "</em> </div>   
-                    
-                    <p> <b class=\"b\">Dirección: </b> " . $reg['direccion'] .", ". $reg['ciudad'] .", ". $reg['estado'] .", ". $reg['cod_postal'] ."</p>  
-                ";
+  <?php
+  function conectar() {
+      $host = "localhost";
+      $dbname = "Biblioteca";
+      $user = "root";
+      $password = "";
 
-                
-                echo "<hr>";
-                }
-            } else {
-                echo "<div class='div-selecciona'/>
-                No se encontraron resultados!! 
-              </div>";
-            }
-            mysqli_close($conexion);
-        }
+      try {
+          $conexion = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+          $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          return $conexion;
+      } catch (PDOException $e) {
+          die("Problemas con la conexión: " . $e->getMessage());
+      }
+  }
 
-    ?>
+  function ejecutarConsultaAutores() {
+      $conexion = conectar();
+
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $busqueda = $_POST["busqueda"];
+          $consulta = "SELECT CONCAT(nombre, ' ', apellido) AS Autor, telefono, direccion, ciudad, estado, pais, cod_postal FROM autores
+                       WHERE CONCAT(nombre, ' ', apellido) LIKE :busqueda";
+          $stmt = $conexion->prepare($consulta);
+          $stmt->bindParam(':busqueda', $busqueda, PDO::PARAM_STR);
+      } else {
+          $consulta = "SELECT CONCAT(nombre, ' ', apellido) AS Autor, telefono, direccion, ciudad, estado, pais, cod_postal FROM autores";
+          $stmt = $conexion->prepare($consulta);
+      }
+
+      try {
+          $stmt->execute();
+          $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+          if (count($registros) > 0) {
+              foreach ($registros as $reg) {
+                  echo "
+                      <h3>" . $reg['Autor'] . "</h3> 
+                      <div class=\"linea\">
+                      <em class=\"izq\"> Tel. " . $reg['telefono'] . "</em> 
+                      <em class=\"der\">" . $reg['pais'] . "</em> </div>   
+
+                      <p> <b class=\"b\">Dirección: </b> " . $reg['direccion'] .", ". $reg['ciudad'] .", ". $reg['estado'] .", ". $reg['cod_postal'] ."</p>  
+                  ";
+
+                  echo "<hr>";
+              }
+          } else {
+              echo "<div class='div-selecciona'/>
+                  No se encontraron resultados!! 
+                </div>";
+          }
+      } catch (PDOException $e) {
+          die("Problemas en la consulta: " . $e->getMessage());
+      } finally {
+          $conexion = null;
+      }
+  }
+
+
+  ?>
+
+
+   
      <!--------Resultado de los datos insertados en contacto------->
      <?php
     if (isset($_GET['correo'])) {
